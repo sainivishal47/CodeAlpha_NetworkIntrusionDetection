@@ -26,78 +26,92 @@ The system monitors network traffic, detects suspicious activity using custom de
 - Log analysis
 - Local web dashboard
 
-## Project Structure
-
-CodeAlpha_NetworkIntrusionDetection/
-├── app.py
-├── custom.rules
-├── README.md
-├── .gitignore
-└── logs/
-
 ## Installation
 
 ### Update Kali Linux
 
+```bash
 sudo apt update
-
+```
 ### Install Suricata
 
+```bash
 sudo apt install suricata -y
+```
 
 ### Check Suricata
 
+```bash
 suricata -V
+```
 
 ### Install Flask
 
+```bash
 sudo apt install python3-flask -y
+```
 
 ## Setup Project
 
 Clone the repository:
 
+```bash
 git clone https://github.com/sainivishal47/CodeAlpha_NetworkIntrusionDetection.git
+```
 
 Go to the project directory:
 
+```bash
 cd CodeAlpha_NetworkIntrusionDetection
+```
 
 ## Test Suricata Configuration
 
+```bash
 sudo suricata -T -c /etc/suricata/suricata.yaml -S custom.rules
+```
 
 ## Run Dashboard
 
+```bash
 python3 app.py
+```
 
 Dashboard:
 
+```bash
 http://127.0.0.1:5000
+```
 
 ## Run Suricata IDS
 
 Open another terminal:
 
+```bash
 cd ~/CodeAlpha_NetworkIntrusionDetection
-
 sudo suricata -c /etc/suricata/suricata.yaml -S custom.rules -i lo -l logs
+```
 
 ## Generate Test Traffic
 
 Open another terminal:
 
+```bash
 cd ~/CodeAlpha_NetworkIntrusionDetection
-
 ping -c 4 127.0.0.1
+```
 
 ## View Security Alerts
 
+```bash
 sudo cat logs/fast.log
+```
 
 Search CodeAlpha alerts:
 
+```bash
 sudo grep -i "CODEALPHA" logs/fast.log
+```
 
 ## Detection Rules
 
